@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Copilot Studio Labs - Interactive Learning</title>
+    <meta name="description" content="Interactive learning platform for Microsoft Copilot Studio with step-by-step guided labs">
+    
+    <!-- Fluent UI Web Components -->
+    <script type="module" src="https://unpkg.com/@fluentui/web-components@2.7.0/dist/web-components.js"></script>
+    
+    <!-- Fluent UI Icons -->
+    <link rel="stylesheet" href="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fluent-theme.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/ai-assistant.css">
+    <link rel="stylesheet" href="css/lab-content.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/copilot-icon.svg">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-animation">
+            <div class="copilot-logo">
+                <div class="logo-ring"></div>
+                <div class="logo-center">🤖</div>
+            </div>
+            <div class="loading-text">Initializing Copilot Studio Labs...</div>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="app-container" style="display: none;">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="app-logo">
+                        <span class="logo-icon">🤖</span>
+                        <h1 class="app-title">Copilot Studio Labs</h1>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <fluent-search class="global-search" placeholder="Search labs, topics, or features..."></fluent-search>
+                </div>
+                <div class="header-right">
+                    <fluent-button class="theme-toggle" appearance="subtle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </fluent-button>
+                    <fluent-button class="help-button" appearance="subtle" aria-label="Help">
+                        <span class="help-icon">❓</span>
+                    </fluent-button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Sidebar Navigation -->
+            <nav class="app-sidebar">
+                <div class="sidebar-header">
+                    <h2>Learning Path</h2>
+                    <div class="progress-ring">
+                        <svg class="progress-circle" width="60" height="60">
+                            <circle cx="30" cy="30" r="25" class="progress-bg"></circle>
+                            <circle cx="30" cy="30" r="25" class="progress-fill" style="--progress: 0"></circle>
+                        </svg>
+                        <div class="progress-text">0%</div>
+                    </div>
+                </div>
+                
+                <div class="lab-list" id="lab-list">
+                    <!-- Dynamic lab list will be generated here -->
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="app-content">
+                <!-- Welcome Screen -->
+                <div id="welcome-screen" class="welcome-screen">
+                    <div class="welcome-hero">
+                        <div class="hero-animation">
+                            <div class="floating-icons">
+                                <div class="icon-bubble" style="--delay: 0s">🤖</div>
+                                <div class="icon-bubble" style="--delay: 0.5s">⚡</div>
+                                <div class="icon-bubble" style="--delay: 1s">🧠</div>
+                                <div class="icon-bubble" style="--delay: 1.5s">🚀</div>
+                            </div>
+                        </div>
+                        <h1 class="hero-title">Welcome to Microsoft Copilot Studio Labs</h1>
+                        <p class="hero-subtitle">Master the art of building intelligent agents with hands-on, interactive labs</p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number" id="total-labs">12</div>
+                                <div class="stat-label">Interactive Labs</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">300+</div>
+                                <div class="stat-label">Screenshots</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">∞</div>
+                                <div class="stat-label">Possibilities</div>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <fluent-button class="primary-cta" appearance="accent" id="start-journey">
+                                Start Your Journey
+                                <span class="cta-icon">→</span>
+                            </fluent-button>
+                            <fluent-button class="secondary-cta" appearance="neutral" id="explore-labs">
+                                Explore Labs
+                            </fluent-button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab Content Area -->
+                <div id="lab-content" class="lab-content" style="display: none;">
+                    <!-- Lab header -->
+                    <div class="lab-header">
+                        <div class="lab-breadcrumb" id="lab-breadcrumb">
+                            <!-- Dynamic breadcrumb -->
+                        </div>
+                        <div class="lab-actions">
+                            <fluent-button class="bookmark-btn" appearance="subtle" aria-label="Bookmark">
+                                <span>🔖</span>
+                            </fluent-button>
+                            <fluent-button class="share-btn" appearance="subtle" aria-label="Share">
+                                <span>📤</span>
+                            </fluent-button>
+                        </div>
+                    </div>
+
+                    <!-- Lab navigation -->
+                    <div class="lab-navigation">
+                        <fluent-button class="nav-btn prev-btn" appearance="subtle" disabled>
+                            <span class="nav-icon">←</span>
+                            Previous Step
+                        </fluent-button>
+                        <div class="step-indicator">
+                            <span class="current-step">1</span>
+                            <span class="step-separator">/</span>
+                            <span class="total-steps">10</span>
+                        </div>
+                        <fluent-button class="nav-btn next-btn" appearance="accent">
+                            Next Step
+                            <span class="nav-icon">→</span>
+                        </fluent-button>
+                    </div>
+
+                    <!-- Lab content display -->
+                    <div class="lab-display" id="lab-display">
+                        <!-- Dynamic lab content -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Assistant Chat -->
+    <div id="ai-assistant" class="ai-assistant">
+        <div class="assistant-toggle" id="assistant-toggle">
+            <div class="assistant-avatar">
+                <div class="avatar-ring"></div>
+                <span class="avatar-icon">🤖</span>
+            </div>
+            <div class="assistant-status">
+                <div class="status-dot"></div>
+                <span class="status-text">AI Helper</span>
+            </div>
+        </div>
+        
+        <div class="assistant-chat" id="assistant-chat" style="display: none;">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <span class="chat-icon">🤖</span>
+                    Copilot Studio AI Assistant
+                </div>
+                <div class="chat-actions">
+                    <fluent-button class="minimize-btn" appearance="subtle" aria-label="Minimize">
+                        <span>−</span>
+                    </fluent-button>
+                    <fluent-button class="close-btn" appearance="subtle" aria-label="Close">
+                        <span>×</span>
+                    </fluent-button>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message assistant-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <p>Hello! I'm your AI assistant for Microsoft Copilot Studio Labs. I can help you with:</p>
+                        <ul>
+                            <li>Explaining concepts and steps</li>
+                            <li>Troubleshooting issues</li>
+                            <li>Providing additional context</li>
+                            <li>Suggesting next steps</li>
+                        </ul>
+                        <p>How can I assist you today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <fluent-text-area 
+                    id="chat-input" 
+                    placeholder="Ask me anything about Copilot Studio..."
+                    rows="2"
+                    resize="none">
+                </fluent-text-area>
+                <fluent-button class="send-btn" appearance="accent" id="send-message">
+                    <span>Send</span>
+                </fluent-button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data-loader.js"></script>
+    <script src="js/lab-renderer.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
