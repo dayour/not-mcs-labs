@@ -113,6 +113,33 @@ that users can copy and paste
 - Provide context for business value and use cases
 - Include best practices for agent design and deployment
 
+## Common Workflows and Tasks
+
+### Creating a New Lab
+1. **Start with template**: Copy `labs/lab-template.md` to create new lab structure
+2. **Set up directory**: Create `labs/[lab-name]/` directory with `README.md` and `images/` folder
+3. **Follow naming conventions**: Use kebab-case for directory names, descriptive filenames for images
+4. **Test thoroughly**: Validate all steps in a clean Microsoft 365 environment
+5. **Update main README**: Add lab entry to the catalog table
+
+### Updating Existing Labs
+1. **Check for UI changes**: Verify current screenshots match current Microsoft Copilot Studio interface
+2. **Test end-to-end**: Re-validate all steps work as expected
+3. **Update prerequisites**: Ensure licensing and access requirements are current
+4. **Maintain backward compatibility**: Consider impact on users who may have bookmarked specific steps
+
+### Managing Screenshots and Assets
+1. **Consistent capture settings**: Use standardized browser window size and zoom level
+2. **Meaningful filenames**: Use descriptive names like `agent-configuration-screen.png`
+3. **Alt text requirements**: Always include descriptive alt text for accessibility
+4. **File size optimization**: Compress images appropriately for web viewing
+
+### Version Control Best Practices
+- **Atomic commits**: Make small, focused commits with clear descriptions
+- **Branch naming**: Use descriptive branch names like `update-agent-builder-lab`
+- **Pull request reviews**: Have labs reviewed by someone who hasn't seen the content before
+- **Documentation of changes**: Clearly describe what was updated and why
+
 ## Technical Considerations
 
 ### File Organization
@@ -132,5 +159,39 @@ that users can copy and paste
 - Include expected outcomes and verification steps
 - Provide troubleshooting guidance for common issues
 - Maintain currency with Microsoft Copilot Studio product updates
+
+## Development Environment and Dependencies
+
+### Project Setup
+This is primarily a documentation repository with minimal technical dependencies:
+- **Node.js dependencies**: Limited to browser automation tools (Playwright) and MCP packages for specific labs
+- **Package management**: Uses npm with `package.json` and `package-lock.json`
+- **Build requirements**: No build process required for documentation content
+- **Testing**: Individual labs should be tested manually in Microsoft Copilot Studio environments
+
+### Common Development Patterns
+- **Documentation-first approach**: All content should be written and tested before publishing
+- **Screenshot management**: Use consistent browser settings and capture methods for UI screenshots
+- **Version control**: Commit frequently with descriptive messages focused on specific lab improvements
+- **Environment considerations**: Labs assume access to Microsoft 365 and Copilot Studio licensing
+
+### Dependencies and External Requirements
+- **Microsoft 365 licensing**: Most labs require access to Copilot Studio (trial or licensed)
+- **Browser automation**: Some labs use Playwright for advanced scenarios
+- **MCP integration**: Specific labs require Model Context Protocol server setup
+- **External APIs**: Some labs integrate with services like Getty Images, ServiceNow, Salesforce
+
+### Anti-patterns to Avoid
+- **Hardcoded environment URLs**: Use placeholder values and document customization steps
+- **Missing prerequisite documentation**: Always specify licensing, access, and setup requirements
+- **Inconsistent UI references**: Keep screenshots and instructions synchronized with product updates
+- **Overly specific configuration**: Write instructions that adapt to different tenant configurations
+- **Missing verification steps**: Always include steps to confirm successful completion
+
+### Testing and Validation Approach
+- **Manual testing required**: Each lab must be tested in a clean environment before publication
+- **Multiple persona validation**: Test instructions from the perspective of different user types (Maker, Developer, Admin)
+- **Environment variation testing**: Verify labs work across different Microsoft 365 tenant configurations
+- **Update validation**: Regularly test labs against current Copilot Studio releases
 
 This repository serves as both educational content and a reference implementation for creating high-quality, hands-on technical tutorials in the Microsoft AI ecosystem.
