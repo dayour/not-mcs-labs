@@ -1,0 +1,362 @@
+/* Cyber Retro Modern Fluent WinUI3 Theme */
+:root {
+    /* Color Palette - Cyber Retro */
+    --cyber-neon-blue: #00d4ff;
+    --cyber-neon-purple: #8b5cf6;
+    --cyber-neon-pink: #f472b6;
+    --cyber-neon-green: #10b981;
+    --cyber-neon-orange: #f59e0b;
+    
+    /* Dark Theme (Default) */
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #151520;
+    --bg-tertiary: #1e1e2a;
+    --bg-card: #161622;
+    --bg-header: rgba(10, 10, 15, 0.95);
+    --bg-sidebar: #0f0f16;
+    --bg-accent-subtle: rgba(139, 92, 246, 0.1);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-tertiary: #64748b;
+    --text-disabled: #475569;
+    --text-inverse: #0f172a;
+    
+    --accent-primary: var(--cyber-neon-purple);
+    --accent-secondary: var(--cyber-neon-blue);
+    --accent-tertiary: var(--cyber-neon-pink);
+    
+    --success-primary: var(--cyber-neon-green);
+    --warning-primary: var(--cyber-neon-orange);
+    --danger-primary: #f87171;
+    --info-primary: var(--cyber-neon-blue);
+    
+    --border-primary: rgba(148, 163, 184, 0.2);
+    --border-secondary: rgba(148, 163, 184, 0.1);
+    --border-accent: var(--accent-primary);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--cyber-neon-purple) 0%, var(--cyber-neon-blue) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--cyber-neon-pink) 0%, var(--cyber-neon-purple) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--cyber-neon-blue) 0%, var(--cyber-neon-green) 100%);
+    --gradient-card: linear-gradient(135deg, rgba(22, 22, 34, 0.8) 0%, rgba(30, 30, 42, 0.8) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.3);
+    --shadow-glow-intense: 0 0 30px rgba(139, 92, 246, 0.5);
+    
+    /* Glass Morphism */
+    --glass-bg: rgba(22, 22, 34, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-backdrop: blur(20px);
+}
+
+/* Light Theme Override */
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-header: rgba(255, 255, 255, 0.95);
+    --bg-sidebar: #fefefe;
+    --bg-accent-subtle: rgba(139, 92, 246, 0.05);
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #64748b;
+    --text-disabled: #94a3b8;
+    --text-inverse: #f8fafc;
+    
+    --border-primary: rgba(15, 23, 42, 0.1);
+    --border-secondary: rgba(15, 23, 42, 0.05);
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.15);
+    --shadow-glow-intense: 0 0 30px rgba(139, 92, 246, 0.25);
+    
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+}
+
+/* Fluent UI Web Components Customization */
+fluent-button {
+    --neutral-fill-rest: var(--bg-card);
+    --neutral-fill-hover: var(--bg-secondary);
+    --neutral-fill-active: var(--bg-tertiary);
+    --neutral-stroke-rest: var(--border-primary);
+    --neutral-foreground-rest: var(--text-primary);
+    --accent-fill-rest: var(--accent-primary);
+    --accent-fill-hover: var(--cyber-neon-blue);
+    --accent-fill-active: var(--cyber-neon-pink);
+    --accent-foreground-rest: var(--text-inverse);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+fluent-button[appearance="accent"] {
+    background: var(--gradient-primary);
+    border: none;
+    box-shadow: var(--shadow-glow);
+    color: var(--text-inverse);
+}
+
+fluent-button[appearance="accent"]:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow-intense);
+}
+
+fluent-search {
+    --neutral-fill-input-rest: var(--bg-card);
+    --neutral-fill-input-hover: var(--bg-secondary);
+    --neutral-fill-input-focus: var(--bg-secondary);
+    --neutral-stroke-input-rest: var(--border-primary);
+    --neutral-stroke-input-hover: var(--accent-primary);
+    --neutral-stroke-input-focus: var(--accent-primary);
+    --neutral-foreground-rest: var(--text-primary);
+    border-radius: var(--radius-lg);
+    backdrop-filter: var(--glass-backdrop);
+}
+
+fluent-text-area {
+    --neutral-fill-input-rest: var(--bg-card);
+    --neutral-fill-input-hover: var(--bg-secondary);
+    --neutral-fill-input-focus: var(--bg-secondary);
+    --neutral-stroke-input-rest: var(--border-primary);
+    --neutral-stroke-input-hover: var(--accent-primary);
+    --neutral-stroke-input-focus: var(--accent-primary);
+    --neutral-foreground-rest: var(--text-primary);
+    border-radius: var(--radius-md);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: var(--radius-md);
+    opacity: 0.7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+    background: var(--accent-secondary);
+}
+
+/* Selection */
+::selection {
+    background: rgba(139, 92, 246, 0.3);
+    color: var(--text-primary);
+}
+
+/* Focus Styles */
+*:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* Cyber Retro Elements */
+.cyber-border {
+    position: relative;
+    border: 1px solid var(--border-primary);
+}
+
+.cyber-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    background: var(--gradient-primary);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.cyber-border:hover::before {
+    opacity: 1;
+}
+
+.glow-text {
+    text-shadow: 0 0 10px currentColor;
+}
+
+.holographic {
+    background: var(--gradient-card);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+}
+
+.neon-glow {
+    box-shadow: var(--shadow-glow);
+    border: 1px solid var(--accent-primary);
+}
+
+.neon-glow:hover {
+    box-shadow: var(--shadow-glow-intense);
+}
+
+/* Pulse Animation for Interactive Elements */
+@keyframes neonPulse {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--accent-primary);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--accent-primary), 0 0 30px var(--accent-primary);
+    }
+}
+
+.pulse-neon {
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
+
+.glitch-effect:hover {
+    animation: glitch 0.3s linear;
+}
+
+/* Data Visualization Styles */
+.data-point {
+    background: var(--accent-primary);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-glow);
+}
+
+.progress-bar-cyber {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-cyber::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    width: var(--progress, 0%);
+    transition: width var(--transition-normal);
+    box-shadow: 0 0 10px var(--accent-primary);
+}
+
+/* Card Hover Effects */
+.cyber-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.cyber-card:hover::before {
+    left: 100%;
+}
+
+.cyber-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    border-color: var(--accent-primary);
+}
+
+/* Typography Enhancements */
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-cyber {
+    font-family: var(--code-font);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* Interactive Elements */
+.interactive-glow {
+    transition: all var(--transition-fast);
+}
+
+.interactive-glow:hover {
+    filter: brightness(1.2);
+    transform: scale(1.02);
+}
+
+/* Loading States */
+.loading-shimmer {
+    background: linear-gradient(90deg, 
+        var(--bg-secondary) 25%, 
+        var(--bg-tertiary) 50%, 
+        var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --border-primary: var(--text-primary);
+        --border-secondary: var(--text-secondary);
+        --shadow-glow: none;
+        --shadow-glow-intense: none;
+    }
+    
+    .cyber-border::before {
+        display: none;
+    }
+}
